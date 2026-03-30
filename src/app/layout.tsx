@@ -17,6 +17,11 @@ import type { PropsWithChildren } from "react";
 import { Providers } from "./providers";
 import { cookies } from "next/headers";
 import QueryProvider from "./providers/query-provider";
+import { Geist } from "next/font/google";
+import { cn } from "@/lib/utils";
+import { Modal } from "@/components/ui-elements/Modal";
+
+const geist = Geist({ subsets: ['latin'], variable: '--font-sans' });
 
 export const metadata: Metadata = {
   title: {
@@ -33,14 +38,18 @@ export default async function RootLayout({ children }: PropsWithChildren) {
   const isLoggedIn = !!token;
 
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className={cn("font-sans", geist.variable)}>
       <body>
 
         <Providers>
-          <ClerkProvider signInUrl="auth/signin">
+          <ClerkProvider
+            signInUrl="auth/signin">
             <QueryProvider>
 
               <NextTopLoader color="#2a809c" showSpinner={false} />
+              {/* Global Modal — sits outside everything */}
+              <Modal />
+
               {isLoggedIn ? (
                 <div className="flex min-h-screen">
                   <Sidebar />

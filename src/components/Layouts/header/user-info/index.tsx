@@ -12,15 +12,24 @@ import Link from "next/link";
 import { useState } from "react";
 import { LogOutIcon, SettingsIcon, UserIcon } from "./icons";
 import { logout } from "@/lib/logout";
+import { User, UserResponse } from "@/types/user";
+import { useEffect } from "react";
 
 export function UserInfo() {
   const [isOpen, setIsOpen] = useState(false);
+  const [user, setUser] = useState<UserResponse | null>(null);
 
-  const USER = {
-    name: "John Smith",
-    email: "johnson@nextadmin.com",
-    img: "/images/user/user-03.png",
-  };
+  useEffect(() => {
+    const data = localStorage.getItem("user");
+    if (data) {
+      setUser(JSON.parse(data));
+    }
+  }, []);
+
+  console.log("user", user);
+
+
+
 
   return (
     <Dropdown isOpen={isOpen} setIsOpen={setIsOpen}>
@@ -29,15 +38,15 @@ export function UserInfo() {
 
         <figure className="flex items-center gap-3">
           <Image
-            src={USER.img}
+            src={"https://cdn-icons-png.freepik.com/512/10302/10302971.png"}
             className="size-12"
-            alt={`Avatar of ${USER.name}`}
+            alt={`Avatar of ${user?.user?.name}`}
             role="presentation"
             width={200}
             height={200}
           />
           <figcaption className="flex items-center gap-1 font-medium text-dark dark:text-dark-6 max-[1024px]:sr-only">
-            <span>{USER.name}</span>
+            <span>{user?.user?.name}</span>
 
             <ChevronUpIcon
               aria-hidden
@@ -59,9 +68,9 @@ export function UserInfo() {
 
         <figure className="flex items-center gap-2.5 px-5 py-3.5">
           <Image
-            src={USER.img}
+            src={"https://cdn-icons-png.freepik.com/512/10302/10302971.png"}
             className="size-12"
-            alt={`Avatar for ${USER.name}`}
+            alt={`Avatar for ${user?.user?.name}`}
             role="presentation"
             width={200}
             height={200}
@@ -69,10 +78,10 @@ export function UserInfo() {
 
           <figcaption className="space-y-1 text-base font-medium">
             <div className="mb-2 leading-none text-dark dark:text-white">
-              {USER.name}
+              {user?.user?.name}
             </div>
 
-            <div className="leading-none text-gray-6">{USER.email}</div>
+            <div className="leading-none text-gray-6">{user?.user?.email}</div>
           </figcaption>
         </figure>
 
@@ -87,18 +96,6 @@ export function UserInfo() {
             <UserIcon />
 
             <span className="mr-auto text-base font-medium">View profile</span>
-          </Link>
-
-          <Link
-            href={"/pages/settings"}
-            onClick={() => setIsOpen(false)}
-            className="flex w-full items-center gap-2.5 rounded-lg px-2.5 py-[9px] hover:bg-gray-2 hover:text-dark dark:hover:bg-dark-3 dark:hover:text-white"
-          >
-            <SettingsIcon />
-
-            <span className="mr-auto text-base font-medium">
-              Account Settings
-            </span>
           </Link>
         </div>
 

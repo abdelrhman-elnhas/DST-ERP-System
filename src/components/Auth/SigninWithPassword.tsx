@@ -45,9 +45,9 @@ export default function SigninWithPassword() {
 
       const userData = await res.json();
 
-      localStorage.setItem("token", userData.token);
-      localStorage.setItem("user", JSON.stringify(userData));
-      document.cookie = `token=${userData.token}; path=/; max-age=${60 * 60 * 24 * 7}`; // 7 days
+      localStorage.setItem("token", userData.data.token);
+      localStorage.setItem("user", JSON.stringify(userData.data));
+      document.cookie = `token=${userData.data.token}; path=/; max-age=${60 * 60 * 24 * 7}`; // 7 days
 
 
       window.location.href = "/";
