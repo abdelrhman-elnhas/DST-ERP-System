@@ -1,7 +1,9 @@
-const BASE_URL = "https://lightcoral-kingfisher-539840.hostingersite.com/api";
+
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+
 
 function getTokenFromCookie(): string | null {
-    if (typeof document === "undefined") return null;
+    if (typeof document === "undefined") return null; // server side guard
     const match = document.cookie
         .split("; ")
         .find((row) => row.startsWith("token="));

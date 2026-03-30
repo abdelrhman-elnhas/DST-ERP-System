@@ -1,9 +1,15 @@
+
+
 import Breadcrumb from "@/components/Breadcrumbs/Breadcrumb";
-import { DocumentTable } from "@/components/Tables/document-table";
+import { CreateDocumentModal } from "@/components/Modals/CreateDocumentModal";
+import { DocumentTable } from "@/components/Tables/Version Control";
 import { TopChannels } from "@/components/Tables/top-channels";
 import { TopChannelsSkeleton } from "@/components/Tables/top-channels/skeleton";
 import { TopProducts } from "@/components/Tables/top-products";
 import { TopProductsSkeleton } from "@/components/Tables/top-products/skeleton";
+import { Button } from "@/components/ui-elements/button";
+import { useModalStore } from "@/store/modalStore";
+
 
 import { Metadata } from "next";
 import { Suspense } from "react";
@@ -25,6 +31,8 @@ const VersionControl = () => {
         <Suspense fallback={<TopProductsSkeleton />}>
           <TopProducts />
         </Suspense> */}
+
+
 
         <DocumentTable />
       </div>
