@@ -27,9 +27,9 @@ export function DonutChart({ data }: PropsType) {
         horizontal: 10,
         vertical: 5,
       },
-      formatter: (legendName, opts) => {
-        const { seriesPercent } = opts.w.globals;
-        return `${legendName}: ${seriesPercent[opts.seriesIndex]}%`;
+      formatter: (legendName, opts: any = 0) => {
+        const { seriesPercent } = opts?.w.globals;
+        return `${legendName}: ${seriesPercent[opts?.seriesIndex]}%`;
       },
     },
     plotOptions: {
