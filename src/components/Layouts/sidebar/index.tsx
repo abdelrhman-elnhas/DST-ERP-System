@@ -29,7 +29,7 @@ export function Sidebar() {
     NAV_DATA.some((section) => {
       return section.items.some((item) => {
         return item.items.some((subItem) => {
-          if (subItem.url === pathname) {
+          if (subItem?.url === pathname) {
             if (!expandedItems.includes(item.title)) {
               toggleExpanded(item.title);
             }
@@ -128,13 +128,13 @@ export function Sidebar() {
                                 role="menu"
                               >
                                 {item.items.map((subItem) => (
-                                  <li key={subItem.title} role="none">
+                                  <li key={subItem?.title} role="none">
                                     <MenuItem
                                       as="link"
-                                      href={subItem.url}
-                                      isActive={pathname === subItem.url}
+                                      href={subItem?.url}
+                                      isActive={pathname === subItem?.url}
                                     >
-                                      <span>{subItem.title}</span>
+                                      <span>{subItem?.title}</span>
                                     </MenuItem>
                                   </li>
                                 ))}

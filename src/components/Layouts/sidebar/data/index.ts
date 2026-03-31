@@ -63,8 +63,7 @@ export const NAV_DATA = [
         }, {
           title: "Handover",
           url: "/handover"
-        },
-          ,],
+        }],
       },
       {
         title: "HR Management & Core Operations",
@@ -75,8 +74,7 @@ export const NAV_DATA = [
         }, {
           title: "Notifications",
           url: "/notifications"
-        },
-          ,],
+        }],
       },
 
     ],
