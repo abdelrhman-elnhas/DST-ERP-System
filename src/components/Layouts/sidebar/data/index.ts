@@ -20,35 +20,7 @@ export const NAV_DATA = [
             title: "Version Control",
             url: "/version-control",
           },
-          {
-            title: "Approval Workflows",
-            url: "/approval-workflows",
-          },
-          {
-            title: "Transmittals & Submittals",
-            url: "/transmittals-submittals"
-          },
-          {
-            title: "Access Control",
-            url: "/access-control"
-          },
-
-
         ],
-      },
-      {
-        title: "Digital Archive",
-        icon: Icons.Calendar,
-        items: [
-          {
-            title: "Search Engine",
-            url: "/search-engine"
-          },
-          {
-            title: "Productivity & Task Management",
-            url: "/productivity-task-management"
-
-          },],
       },
       {
         title: "Task Management & Team Follow-up",
@@ -59,80 +31,35 @@ export const NAV_DATA = [
             url: "/task-board"
           },
           {
-            title: "Productivity & Task Management",
-            url: "/productivity-task-management"
-
-          },
-          {
             title: "Daily Log & Time Sheets",
             url: "/daily-log-time-sheets"
           },
           {
-            title: "Automated Reminders",
-            url: "/automated-reminders"
-          },
-          {
-            title: "Issue Tracking",
-            url: "/issue-tracking"
+            title: "Team Follow Up",
+            url: "/team-follow-up"
           },],
       },
       {
-        title: "Productionary Dashboards",
-        icon: Icons.Calendar,
-        items: [
-          {
-            title: "Leading Board",
-            url: "/leading-board"
-          },
-          {
-            title: "Field Progress",
-            url: "/field-progress"
-
-          },
-          {
-            title: "AI & GIS",
-            url: "/ai-gis"
-          },
-          {
-            title: "Live Operations Map",
-            url: "/live-operations"
-          },
-          {
-            title: "Resource Utilization",
-            url: "/resource-utilization"
-          },
-          {
-            title: "Core Operations",
-            url: "/core-operations"
-          },],
-      },
-      {
-        title: "Field Operations & Data Collection App",
-        url: "/field-operations-data-collection",
-        icon: Icons.Calendar,
-        items: [],
-      },
-      {
-        title: "GIS & Geo-AI",
+        title: "Field Operations & GEO-AI",
         icon: Icons.Calendar,
         items: [{
-          title: "Metadata Management",
-          url: "/metadata-management"
+          title: "Field Reports",
+          url: "/field-reports"
         }, {
-          title: "AI Model Catalog",
-          url: "/ai-model-catalog"
+          title: "Live Operations Map",
+          url: "/live-operations-map"
         },
         {
-          title: "Assets & Resources",
-          url: "/assets-resources"
+          title: "Data Collection",
+          url: "/data-collection"
         },],
       },
       {
         title: "Asset & Equipment Control",
         icon: Icons.Calendar,
         items: [{
-          title: "Drones Tracking",
-          url: "/drones-tracking"
+          title: "Asset Control",
+          url: "/asset-control"
         }, {
           title: "Handover",
           url: "/handover"
@@ -140,23 +67,18 @@ export const NAV_DATA = [
           ,],
       },
       {
-        title: "Fleet & Transport",
-        url: "/fleet-transport",
+        title: "HR Management & Core Operations",
         icon: Icons.Calendar,
-        items: [],
+        items: [{
+          title: "Projects",
+          url: "/projects"
+        }, {
+          title: "Notifications",
+          url: "/notifications"
+        },
+          ,],
       },
-      {
-        title: "HR Management",
-        url: "/hr-management",
-        icon: Icons.Calendar,
-        items: [],
-      },
-      {
-        title: "Project Costing",
-        url: "/project-costing",
-        icon: Icons.Calendar,
-        items: [],
-      },
+
     ],
   },
   // {
