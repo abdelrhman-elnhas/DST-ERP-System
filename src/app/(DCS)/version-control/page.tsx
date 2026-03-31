@@ -2,7 +2,7 @@
 
 import Breadcrumb from "@/components/Breadcrumbs/Breadcrumb";
 import { CreateDocumentModal } from "@/components/Modals/CreateDocumentModal";
-import { DocumentTable } from "@/components/Tables/Version Control";
+import { DocumentTable } from "@/components/Tables/VersionControl";
 import { TopChannels } from "@/components/Tables/top-channels";
 import { TopChannelsSkeleton } from "@/components/Tables/top-channels/skeleton";
 import { TopProducts } from "@/components/Tables/top-products";
@@ -12,7 +12,6 @@ import { useModalStore } from "@/store/modalStore";
 
 
 import { Metadata } from "next";
-import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "Version Control",
@@ -21,7 +20,7 @@ export const metadata: Metadata = {
 const VersionControl = () => {
   return (
     <>
-      <Breadcrumb pageName="Version Control" />
+      <Breadcrumb parentCategoryName="DCS" pageName="Version Control" />
 
       <div className="space-y-10">
         {/* <Suspense fallback={<TopChannelsSkeleton />}>
