@@ -15,7 +15,7 @@ export default function Page() {
   });
 
   const handleChange = (e: any) => {
-    if (e.target.name === "profilePhoto" ) {
+    if (e.target.name === "profilePhoto") {
       const file = e.target?.files[0];
 
       setData({
@@ -39,7 +39,7 @@ export default function Page() {
 
   return (
     <div className="mx-auto w-full max-w-[970px]">
-      <Breadcrumb pageName="Profile" />
+      <Breadcrumb parentCategoryName="Profile" pageName="Profile" />
 
       <div className="overflow-hidden rounded-[10px] bg-white shadow-1 dark:bg-gray-dark dark:shadow-card">
         <div className="relative z-20 h-35 md:h-65">

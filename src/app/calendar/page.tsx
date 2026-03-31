@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 const CalendarPage = () => {
   return (
     <>
-      <Breadcrumb pageName="Calendar" />
+      <Breadcrumb parentCategoryName="Calender" pageName="Calendar" />
 
       <CalendarBox />
     </>
