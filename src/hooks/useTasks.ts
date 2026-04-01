@@ -38,7 +38,7 @@ export function useUpdateTask() {
             id: string;
             status: TaskStatus;
         }) =>
-            apiFetch(`/tasks/${id}/status`, {
+            apiFetch(`tasks/${id}/status`, {
                 method: "PATCH",
                 body: JSON.stringify({ status }),
             }),
