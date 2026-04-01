@@ -12,6 +12,6 @@ const taskKeys = {
 export function useTeam(page: number = 1) {
     return useQuery<TeamResponse>({
         queryKey: taskKeys.list(page),
-        queryFn: () => apiFetch(`my-team?page=${page}`),
+        queryFn: () => apiFetch(`teams?page=${page}`),
     });
 }

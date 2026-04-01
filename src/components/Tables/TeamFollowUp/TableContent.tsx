@@ -26,8 +26,7 @@ import { Team } from "@/types/team";
 const TableContent = () => {
     const [page, setPage] = useState(1);
     const { data: team } = useTeam(page);
-    console.log(team);
-    const teamData = team?.data?.data;
+    const teamData = team?.data;
     const pagination = team?.data;
     const { openModal } = useModalStore();
     return (
@@ -42,8 +41,8 @@ const TableContent = () => {
                     <TableHeader>
                         <TableRow className="border-none bg-[#F7F9FC] dark:bg-dark-2 [&>th]:py-4 [&>th]:text-base [&>th]:text-dark [&>th]:dark:text-white">
                             <TableHead className="min-w-[155px] xl:pl-7.5">Name</TableHead>
-                            <TableHead>Email</TableHead>
-                            <TableHead>Role</TableHead>
+                            <TableHead>Team Leader</TableHead>
+                            <TableHead>Department</TableHead>
                             <TableHead className="text-right xl:pr-7.5">Actions</TableHead>
                         </TableRow>
                     </TableHeader>
@@ -58,72 +57,39 @@ const TableContent = () => {
 
                                 <TableCell>
                                     <p className="text-dark dark:text-white">
-                                        {item.email}
+                                        {item.leader.name}
                                     </p>
                                 </TableCell>
 
                                 <TableCell>
                                     <p className="text-dark dark:text-white">
-                                        {item.role}
-                                    </p>
-                                </TableCell>
-
-                                <TableCell>
-                                    <p className="text-dark dark:text-white">
-                                        {item.status}
+                                        {item.profiles[0].department}
                                     </p>
                                 </TableCell>
 
 
-
-                                {/* <TableCell>
-                <div
-                  className={cn(
-                    "max-w-fit rounded-full px-3.5 py-1 text-sm font-medium",
-                    {
-                      "bg-[#219653]/[0.08] text-[#219653]":
-                        item.status === "Paid",
-                      "bg-[#D34053]/[0.08] text-[#D34053]":
-                        item.status === "Unpaid",
-                      "bg-[#FFA70B]/[0.08] text-[#FFA70B]":
-                        item.status === "Pending",
-                    },
-                  )}
-                >
-                  {item.status === "Paid" ? "Active" : item.status === "Unpaid" ? "Inactive" : "Pending"}
-                </div>
-              </TableCell>
-
-              <TableCell>
-                <p className="text-dark dark:text-white">
-                  {dayjs(item.date).format("MMM DD, YYYY")}
-                </p>
-              </TableCell> */}
 
                                 <TableCell className="xl:pr-7.5">
                                     <div className="flex items-center justify-end gap-x-3.5">
 
-                                        <button className="hover:text-primary" onClick={() => openModal("Delete Team Member", <DeleteItemModal id={item.id} name={item.name} />)}>
+                                        <button className="hover:text-primary">
                                             <span className="sr-only">Delete Team Member</span>
                                             <TrashIcon />
                                         </button>
 
-                                        {/* <button className="hover:text-primary" onClick={() => window.open(`https://lightcoral-kingfisher-539840.hostingersite.com/${item.versions[item.versions.length - 1].file_path}`, "_blank", "download")}>
-                      <span className="sr-only">Download Document</span>
-                      <DownloadIcon />
-                    </button> */}
-                                        <button className="hover:text-primary" onClick={() => openModal("Update Team Member", <UpdateDocumentModal id={item.id} name={item.name} />)}>
+
+                                        <button className="hover:text-primary" >
                                             <span className="sr-only">Update Team Member</span>
                                             <PencilSquareIcon />
                                         </button>
-                                    </div>
-                                </TableCell>
-                            </TableRow>
+                                    </div >
+                                </TableCell >
+                            </TableRow >
                         ))}
-                    </TableBody>
-                </Table>
+                    </TableBody >
+                </Table >
 
-                {pagination && (
+                {/* {pagination && (
                     <Pagination
                         currentPage={pagination.current_page}
                         lastPage={pagination.last_page}
@@ -134,8 +100,8 @@ const TableContent = () => {
                         hasPrevPage={!!pagination.prev_page_url}
                         onPageChange={(newPage) => setPage(newPage)}
                     />
-                )}
-            </div>
+                )} */}
+            </div >
         </>
     )
 }

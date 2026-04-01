@@ -18,10 +18,9 @@ export function TeamFollowUpSkeleton() {
             <Table>
                 <TableHeader>
                     <TableRow className="border-none bg-[#F7F9FC] dark:bg-dark-2 [&>th]:py-4 [&>th]:text-base [&>th]:text-dark [&>th]:dark:text-white">
-                        <TableHead className="min-w-[155px] xl:pl-7.5">Title</TableHead>
-                        <TableHead>Document Number</TableHead>
-                        <TableHead>Project</TableHead>
-                        <TableHead>Latest Version</TableHead>
+                        <TableHead className="min-w-[155px] xl:pl-7.5">Name</TableHead>
+                        <TableHead>Team Leader</TableHead>
+                        <TableHead>Department</TableHead>
                         <TableHead className="text-right xl:pr-7.5">Actions</TableHead>
                     </TableRow>
                 </TableHeader>
