@@ -10,25 +10,28 @@ export function UpdateDocumentModal({ id, name }: { id: number, name: string }) 
     const updateDocument = useUpdateDocumentVersion();
     const { closeModal } = useModalStore();
 
-    const [form, setForm] = useState({
-        id: id,
-        file: ""
-    });
+    const [file, setFile] = useState<File | null>(null);
     const [error, setError] = useState("");
 
-    const handleChange = (
-        e: React.ChangeEvent<HTMLInputElement>
-    ) => {
-        setForm({ ...form, [e.target.name]: e.target.value });
+    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const selectedFile = e.target.files?.[0];
+        if (selectedFile) setFile(selectedFile);
     };
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setError("");
 
+        if (!file) {
+            setError("Please select a file");
+            return;
+        }
+
         try {
-            console.log("payload", form);
-            await updateDocument.mutateAsync(form);
+            const formData = new FormData()
+            formData.append("file", file);
+
+            await updateDocument.mutateAsync({ id, formData });
             closeModal();
         } catch (err: any) {
             setError(err.message ?? "Something went wrong");
@@ -46,9 +49,8 @@ export function UpdateDocumentModal({ id, name }: { id: number, name: string }) 
                     fileStyleVariant="style1"
                     label="Document file"
                     placeholder="Attach Document file"
-                    handleChange={handleChange}
+                    handleChange={handleFileChange}
                     name="file"
-                    value={form.file}
                     required
                     className="w-full rounded-lg border border-stroke bg-transparent px-4 py-3 text-dark outline-none transition focus:border-primary dark:border-dark-3 dark:text-white"
 

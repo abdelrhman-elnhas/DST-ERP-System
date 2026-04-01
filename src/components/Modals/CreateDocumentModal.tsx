@@ -5,31 +5,52 @@ import { useCreateDocument } from "@/hooks/useDocuments";
 import { useModalStore } from "@/store/modalStore";
 import InputGroup from "../FormElements/InputGroup";
 import { Button } from "../ui-elements/button";
+import { CreateDocumentPayload } from "@/types/document";
 
 export function CreateDocumentModal() {
     const createDocument = useCreateDocument();
     const { closeModal } = useModalStore();
 
-    const [form, setForm] = useState({
+    const [form, setForm] = useState<CreateDocumentPayload>({
         title: "",
         project_id: "",
         document_folder_id: "",
-        file: "",
+        file: null,
     });
+
+    const [file, setFile] = useState<File | null>(null);
     const [error, setError] = useState("");
 
     const handleChange = (
-        e: React.ChangeEvent<HTMLInputElement>
+        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
     ) => {
         setForm({ ...form, [e.target.name]: e.target.value });
+    };
+
+    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        // ✅ e.target.files[0] is the real File object, not the fake path
+        const selectedFile = e.target.files?.[0];
+        if (selectedFile) setFile(selectedFile);
     };
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setError("");
 
+        if (!file) {
+            setError("Please select a file");
+            return;
+        }
+
         try {
-            await createDocument.mutateAsync(form);
+            // ✅ build FormData — this is what the server actually receives
+            const formData = new FormData();
+            formData.append("title", form.title);
+            formData.append("project_id", form.project_id);
+            formData.append("document_folder_id", form.document_folder_id);
+            formData.append("file", file); // ✅ real file object not a path
+
+            await createDocument.mutateAsync(formData);
             closeModal();
         } catch (err: any) {
             setError(err.message ?? "Something went wrong");
@@ -80,9 +101,8 @@ export function CreateDocumentModal() {
                     fileStyleVariant="style1"
                     label="Document file"
                     placeholder="Attach Document file"
-                    handleChange={handleChange}
+                    handleChange={handleFileChange}
                     name="file"
-                    value={form.file}
                     required
                     className="w-full rounded-lg border border-stroke bg-transparent px-4 py-3 text-dark outline-none transition focus:border-primary dark:border-dark-3 dark:text-white"
 

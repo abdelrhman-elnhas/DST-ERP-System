@@ -1,6 +1,6 @@
 'use client'
 import { apiFetch } from "@/lib/api"
-import { CreateDocumentPayload, DocumentsResponse, DocumentVersion, UpdateDocumentVersionResponse } from "@/types/document";
+import { DocumentsResponse } from "@/types/document";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 
 
@@ -26,9 +26,9 @@ export function useCreateDocument() {
     const queryClient = useQueryClient();
 
     return useMutation({
-        mutationFn: (payload: CreateDocumentPayload) => apiFetch('dcs/documents/', {
+        mutationFn: (formData: FormData) => apiFetch('dcs/documents/', {
             method: "POST",
-            body: JSON.stringify(payload)
+            body: formData
         }),
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: documentQueryKeys.all });
@@ -58,11 +58,11 @@ export function useUpdateDocumentVersion() {
     const queryClient = useQueryClient();
 
     return useMutation({
-        mutationFn: ({ id, file }: { id: number; file: string; }) =>
+        mutationFn: ({ id, formData }: { id: number; formData: FormData }) =>
             apiFetch(`dcs/documents/${id}/version`,
                 {
                     method: "POST",
-                    body: JSON.stringify(file),
+                    body: formData,
                 }),
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: documentQueryKeys.all });

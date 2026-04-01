@@ -50,7 +50,7 @@ export interface CreateDocumentPayload {
     title: string;
     project_id: string;
     document_folder_id: string;
-    file: string;
+    file: File | null;
 }
 
 export interface UpdateDocumentVersionResponse {
