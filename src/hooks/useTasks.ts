@@ -4,7 +4,7 @@ import { TaskResponse, TaskStatus, TaskDetailResponse } from "@/types/task";
 
 
 
-const taskKeys = {
+const taskQueryKeys = {
     all: ["tasks"] as const,
     details: (id: number) => ["tasks", id] as const,
 };
@@ -13,7 +13,7 @@ const taskKeys = {
 
 export function useTasks() {
     return useQuery<TaskResponse>({
-        queryKey: taskKeys.all,
+        queryKey: taskQueryKeys.all,
         queryFn: () => apiFetch("tasks"),
     });
 }
@@ -21,7 +21,7 @@ export function useTasks() {
 
 export function useTaskDetails(id: number) {
     return useQuery<TaskDetailResponse>({
-        queryKey: taskKeys.details(id),
+        queryKey: taskQueryKeys.details(id),
         queryFn: () => apiFetch(`tasks/${id}`),
     });
 }
@@ -45,12 +45,12 @@ export function useUpdateTask() {
 
         // ⚡ optimistic update
         onMutate: async ({ id, status }) => {
-            await queryClient.cancelQueries({ queryKey: taskKeys.all });
+            await queryClient.cancelQueries({ queryKey: taskQueryKeys.all });
 
             const previousTasks =
-                queryClient.getQueryData<TaskResponse>(taskKeys.all);
+                queryClient.getQueryData<TaskResponse>(taskQueryKeys.all);
 
-            queryClient.setQueryData<TaskResponse>(taskKeys.all, old => {
+            queryClient.setQueryData<TaskResponse>(taskQueryKeys.all, old => {
                 if (!old) return old;
 
                 return {
@@ -69,13 +69,13 @@ export function useUpdateTask() {
 
         onError: (_err, _vars, context) => {
             queryClient.setQueryData(
-                taskKeys.all,
+                taskQueryKeys.all,
                 context?.previousTasks
             );
         },
 
         onSettled: () => {
-            queryClient.invalidateQueries({ queryKey: taskKeys.all });
+            queryClient.invalidateQueries({ queryKey: taskQueryKeys.all });
         },
     });
 }

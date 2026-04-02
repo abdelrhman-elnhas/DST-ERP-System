@@ -8,7 +8,6 @@ import { useTaskDetails } from "@/hooks/useTasks";
 export function TaskDetailsModal({ id }: { id: number }) {
     const showTask = useTaskDetails(id);
     const task = showTask?.data?.data;
-    console.log("showTask", task);
     const { closeModal } = useModalStore();
 
     if (showTask.isLoading) {
@@ -90,7 +89,7 @@ export function TaskDetailsModal({ id }: { id: number }) {
             <div className="flex items-center justify-end gap-3 pt-4 border-t border-gray-100">
                 <Button
                     onClick={closeModal}
-                    className="rounded-lg border border-gray-200 bg-white px-6 py-2.5 text-sm font-medium text-gray-700 shadow-sm transition hover:bg-gray-50 focus:ring-2 focus:ring-gray-200"
+                    className="rounded-lg  bg-primary px-6 py-2.5 text-sm font-medium text-white shadow-sm transition hover:opacity-90 focus:ring-2 focus:ring-gray-200"
                     label="Close"
                 />
             </div>
