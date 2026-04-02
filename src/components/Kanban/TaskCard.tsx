@@ -18,6 +18,7 @@ export default function TaskCard({ task }: { task: Task }) {
     const style = transform
         ? {
             transform: `translate(${transform.x}px, ${transform.y}px)`,
+            zIndex: 1000,
         }
         : undefined;
 

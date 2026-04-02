@@ -1,25 +1,30 @@
 "use client";
 
 import { compactFormat } from "@/lib/format-number";
+import { TaskDistribution } from "@/types/dashboard";
 import type { ApexOptions } from "apexcharts";
 import dynamic from "next/dynamic";
 
-type PropsType = {
-  data: { name: string; amount: number }[];
-};
 
 const Chart = dynamic(() => import("react-apexcharts"), {
   ssr: false,
 });
 
-export function DonutChart({ data }: PropsType) {
+export function DonutChart({ data }: { data: TaskDistribution | undefined }) {
+
+
+
+  const entries = data ? Object.entries(data) : [];
+
   const chartOptions: ApexOptions = {
     chart: {
       type: "donut",
       fontFamily: "inherit",
     },
-    colors: ["#5750F1", "#5475E5", "#8099EC", "#ADBCF2"],
-    labels: data.map((item) => item.name),
+    colors: ["#2a809c", "#3a9ab5", "#5ab5cc", "#8fd0e0"],
+    labels: entries.map(([key]) =>
+      key.split("_").map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(" ")
+    ),
     legend: {
       show: true,
       position: "bottom",
@@ -42,7 +47,7 @@ export function DonutChart({ data }: PropsType) {
             total: {
               show: true,
               showAlways: true,
-              label: "Visitors",
+              label: "Total Tasks",
               fontSize: "16px",
               fontWeight: "400",
             },
@@ -69,6 +74,14 @@ export function DonutChart({ data }: PropsType) {
         },
       },
       {
+        breakpoint: 1920,
+        options: {
+          chart: {
+            width: 350,
+          },
+        },
+      },
+      {
         breakpoint: 640,
         options: {
           chart: {
@@ -90,7 +103,7 @@ export function DonutChart({ data }: PropsType) {
   return (
     <Chart
       options={chartOptions}
-      series={data.map((item) => item.amount)}
+      series={entries.map(([, val]) => val)}
       type="donut"
     />
   );

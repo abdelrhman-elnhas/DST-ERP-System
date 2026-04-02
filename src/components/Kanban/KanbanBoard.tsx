@@ -22,7 +22,6 @@ const columns: TaskStatus[] = [
 export default function KanbanBoard() {
     const { data: tasksResponse, isLoading } = useTasks();
     const tasksData = tasksResponse?.data?.data || [];
-    isLoading ? console.log("loading") : console.log("tasks", tasksData);
     const updateTask = useUpdateTask();
 
     const sensors = useSensors(
