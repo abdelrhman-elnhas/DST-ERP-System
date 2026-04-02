@@ -1,6 +1,6 @@
 'use client'
 
-import { PencilSquareIcon, TrashIcon } from "@/assets/icons";
+import { CheckoutWithReturnIcon, PencilSquareIcon, ReturnToWarehouseIcon, TrashIcon, TrendingUpIcon, UploadIcon, XIcon } from "@/assets/icons";
 import {
     Table,
     TableBody,
@@ -14,13 +14,12 @@ import dayjs from "dayjs";
 import { PreviewIcon } from "../icons";
 import { useModalStore } from "@/store/modalStore";
 import { Button } from "@/components/ui-elements/button";
-import { CreateDocumentModal } from "@/components/Modals/CreateDocumentModal";
-import { DeleteItemModal } from "@/components/Modals/DeleteItemModal";
-import { UpdateDocumentModal } from "@/components/Modals/UpdateDocumentModal";
 import { Pagination } from "@/components/ui/Pagination";
 import { useState } from "react";
 import { useAssets } from "@/hooks/useAssets";
 import { Asset } from "@/types/asset";
+import AssetCheckoutModal from "@/components/Modals/AssetCheckoutModal";
+import AssetReturnModal from "@/components/Modals/AssetReturnModal";
 
 const TableContent = () => {
     const [page, setPage] = useState(1);
@@ -30,11 +29,6 @@ const TableContent = () => {
     const { openModal } = useModalStore();
     return (
         <>
-            <div className="flex justify-end mb-4 me-1">
-                {/* <Button label="Create New Asset" size="xsmall" variant="primary" shape="rounded" onClick={() =>
-                    openModal("New Asset", <CreateAssetModal />)
-                } /> */}
-            </div>
             <div className="rounded-[10px] border border-stroke bg-white p-4 shadow-1 dark:border-dark-3 dark:bg-gray-dark dark:shadow-card sm:p-7.5">
                 <Table>
                     <TableHeader>
@@ -86,10 +80,6 @@ const TableContent = () => {
                                     </p>
                                 </TableCell>
 
-
-
-
-
                                 <TableCell>
                                     <p className="text-dark dark:text-white">
                                         {dayjs(item.purchase_date).format("MMM DD, YYYY")}
@@ -99,15 +89,19 @@ const TableContent = () => {
                                 <TableCell className="xl:pr-7.5">
                                     <div className="flex items-center justify-end gap-x-3.5">
 
-                                        {/* <button className="hover:text-primary" onClick={() => openModal("Delete Asset", <DeleteItemModal id={item.id} name={item.name} />)}>
-                                            <span className="sr-only">Delete Asset</span>
-                                            <TrashIcon />
-                                        </button> */}
+                                        <button className="hover:text-primary" onClick={() =>
+                                            openModal("Asset Checkout", <AssetCheckoutModal id={Number(item.id)} name={item.name} />)
+                                        }>
+                                            <span className="sr-only">Asset Return</span>
+                                            <CheckoutWithReturnIcon />
+                                        </button>
 
-                                        {/* <button className="hover:text-primary" onClick={() => openModal("Update Asset", <UpdateDocumentModal id={item.id} name={item.name} />)}>
-                                            <span className="sr-only">Update Asset</span>
-                                            <PencilSquareIcon />
-                                        </button> */}
+                                        <button className="hover:text-primary" onClick={() =>
+                                            openModal("Asset Return", <AssetReturnModal id={Number(item.id)} name={item.name} />)
+                                        }>
+                                            <span className="sr-only">Asset Checkout</span>
+                                            <ReturnToWarehouseIcon />
+                                        </button>
                                     </div>
                                 </TableCell>
                             </TableRow>

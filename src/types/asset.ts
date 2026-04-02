@@ -40,3 +40,7 @@ export interface AssetCheckoutRequest {
     expected_return: string;
 }
 
+export interface AssetReturnRequest {
+    id: number;
+}
+

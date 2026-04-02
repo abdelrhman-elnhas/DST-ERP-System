@@ -6,7 +6,6 @@ import { useAssets } from "@/hooks/useAssets";
 
 export function AssetsControlTable() {
   const [page, setPage] = useState(1);
-
   const { isLoading, isError } = useAssets(page);
 
   if (isError) {

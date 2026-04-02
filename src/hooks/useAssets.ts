@@ -5,7 +5,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 const assetQueryKeys = {
     all: ["assets"] as const,
     list: (page: number) => ["assets", "list", page] as const,
-    checkout: ({ id, user_id, expected_return }: AssetCheckoutRequest) => ["assets", id, user_id, expected_return] as const,
+    checkout: () => ["assets", "checkout"] as const,
     returns: (id: number) => ["assets", id] as const,
 }
 
@@ -16,12 +16,12 @@ export function useAssets(page: number) {
     })
 }
 
-export function useAssetCheckout({ id, user_id, expected_return }: AssetCheckoutRequest) {
+export function useAssetCheckout() {
     const queryClient = useQueryClient();
 
     return useMutation({
-        mutationKey: assetQueryKeys.checkout({ id, user_id, expected_return }),
-        mutationFn: () => apiFetch(`assets/${id}/checkout`, {
+        mutationKey: assetQueryKeys.checkout(),
+        mutationFn: ({ id, user_id, expected_return }: AssetCheckoutRequest) => apiFetch(`assets/${id}/checkout`, {
             method: "POST",
             body: JSON.stringify({ user_id, expected_return }),
         }),
