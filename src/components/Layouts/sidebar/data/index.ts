@@ -9,7 +9,7 @@ export const NAV_DATA = [
       {
         title: "Home",
         icon: Icons.HomeIcon,
-        url: "/",
+        url: "/home",
         items: [],
       },
       {
@@ -29,10 +29,6 @@ export const NAV_DATA = [
           {
             title: "Task Board",
             url: "/task-board"
-          },
-          {
-            title: "Daily Log & Time Sheets",
-            url: "/daily-log-time-sheets"
           },
           {
             title: "Team Follow Up",
@@ -57,13 +53,8 @@ export const NAV_DATA = [
       {
         title: "Asset & Equipment Control",
         icon: Icons.Calendar,
-        items: [{
-          title: "Asset Control",
-          url: "/asset-control"
-        }, {
-          title: "Handover",
-          url: "/handover"
-        }],
+        url: "/asset-control",
+        items: [],
       },
       {
         title: "HR Management & Core Operations",

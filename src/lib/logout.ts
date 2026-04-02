@@ -20,6 +20,6 @@ export async function logout() {
 
         document.cookie = "token=; path=/; max-age=0";
 
-        window.location.href = "/auth/signin";
+        window.location.href = "/";
     }
 }

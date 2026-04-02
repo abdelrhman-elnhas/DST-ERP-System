@@ -26,7 +26,6 @@ export function UserInfo() {
     }
   }, []);
 
-  console.log("user", user);
 
 
 

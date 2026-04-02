@@ -50,7 +50,7 @@ export default function SigninWithPassword() {
       document.cookie = `token=${userData.data.token}; path=/; max-age=${60 * 60 * 24 * 7}`; // 7 days
 
 
-      window.location.href = "/";
+      window.location.href = "/home";
     } catch (err: any) {
       setError(err.message ?? "Something went wrong");
     } finally {

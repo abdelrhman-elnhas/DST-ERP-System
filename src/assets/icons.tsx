@@ -416,3 +416,86 @@ export function UploadIcon(props: IconProps) {
     </svg>
   );
 }
+
+export function CheckoutWithReturnIcon(props: IconProps) {
+  return (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
+      fill="none"
+      {...props}
+    >
+      {/* Bigger clock */}
+      <circle
+        cx="7"
+        cy="10"
+        r="5"
+        stroke="currentColor"
+        strokeWidth="1.8"
+      />
+
+      {/* Simple clock hand */}
+      <path
+        d="M7 7.5V10L9.5 11.5"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+
+      {/* Strong arrow OUT */}
+      <path
+        d="M12 10H18"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+      />
+      <path
+        d="M15.5 7.5L18 10L15.5 12.5"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+export function ReturnToWarehouseIcon(props: IconProps) {
+  return (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
+      fill="none"
+      {...props}
+    >
+      {/* Box */}
+      <rect
+        x="3"
+        y="6"
+        width="14"
+        height="10"
+        rx="2"
+        stroke="currentColor"
+        strokeWidth="1.5"
+      />
+
+      {/* Arrow into box */}
+      <path
+        d="M10 2V10"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+      <path
+        d="M7.5 7.5L10 10L12.5 7.5"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}

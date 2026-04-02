@@ -1,15 +1,21 @@
 import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 import { NextRequest, NextResponse } from "next/server";
 
-const isPublicRoute = createRouteMatcher(["/auth/signin(.*)"]);
+const isPublicRoute = createRouteMatcher(["/", "/auth/signin(.*)"]);
 
 
 export default function middleware(req: NextRequest) {
     const { pathname } = req.nextUrl;
+    const requestHeaders = new Headers(req.headers);
+    requestHeaders.set("x-pathname", pathname);
 
     // Allow public routes through
     if (isPublicRoute(req)) {
-        return NextResponse.next();
+        return NextResponse.next({
+            request: {
+                headers: requestHeaders,
+            }
+        });
     }
 
     // Check for your API token in cookies
@@ -19,7 +25,11 @@ export default function middleware(req: NextRequest) {
         return NextResponse.redirect(new URL("/auth/signin", req.url));
     }
 
-    return NextResponse.next();
+    return NextResponse.next({
+        request: {
+            headers: requestHeaders,
+        }
+    });
 }
 
 export const config = {

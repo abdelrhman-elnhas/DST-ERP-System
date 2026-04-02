@@ -15,7 +15,7 @@ import type { Metadata } from "next";
 import NextTopLoader from "nextjs-toploader";
 import type { PropsWithChildren } from "react";
 import { Providers } from "./providers";
-import { cookies } from "next/headers";
+import { cookies, headers } from "next/headers";
 import QueryProvider from "./providers/query-provider";
 import { Geist } from "next/font/google";
 import { cn } from "@/lib/utils";
@@ -34,8 +34,13 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({ children }: PropsWithChildren) {
   const cookieStore = await cookies();
+  const headerList = await headers();
   const token = cookieStore.get("token")?.value;
+  const pathname = headerList.get("x-pathname");
   const isLoggedIn = !!token;
+
+  // Routes that should NOT have the ERP sidebar/header
+  const isPublicView = pathname === "/" || pathname?.startsWith("/auth");
 
   return (
     <html lang="en" suppressHydrationWarning className={cn("font-sans", geist.variable)}>
@@ -50,7 +55,7 @@ export default async function RootLayout({ children }: PropsWithChildren) {
               {/* Global Modal — sits outside everything */}
               <Modal />
 
-              {isLoggedIn ? (
+              {isLoggedIn && !isPublicView ? (
                 <div className="flex min-h-screen">
                   <Sidebar />
                   <div className="w-full bg-gray-2 dark:bg-[#020d1a]">
