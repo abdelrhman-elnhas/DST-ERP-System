@@ -2,28 +2,45 @@
 
 import { Calendar } from "@/components/Layouts/sidebar/icons";
 import flatpickr from "flatpickr";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
-const DatePickerOne = () => {
+interface DatePickerOneProps {
+  value?: string;
+  onChange?: (date: string) => void;
+  label?: string;
+}
+
+const DatePickerOne = ({ value, onChange, label = "Date picker" }: DatePickerOneProps) => {
+  const dateInputRef = useRef<HTMLInputElement>(null);
+
   useEffect(() => {
-    // Init flatpickr
-    flatpickr(".form-datepicker", {
-      mode: "single",
-      static: true,
-      monthSelectorType: "static",
-      dateFormat: "M j, Y",
-    });
-  }, []);
+    if (dateInputRef.current) {
+      flatpickr(dateInputRef.current, {
+        mode: "single",
+        static: true,
+        monthSelectorType: "static",
+        dateFormat: "M j, Y",
+        defaultDate: value,
+        onChange: (selectedDates, dateStr) => {
+          if (onChange) {
+            onChange(dateStr);
+          }
+        },
+      });
+    }
+  }, [onChange, value]);
 
   return (
     <div>
       <label className="mb-3 block text-body-sm font-medium text-dark dark:text-white">
-        Date picker
+        {label}
       </label>
       <div className="relative">
         <input
+          ref={dateInputRef}
           className="form-datepicker w-full rounded-[7px] border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal outline-none transition focus:border-primary active:border-primary dark:border-dark-3 dark:bg-dark-2 dark:focus:border-primary"
           placeholder="mm/dd/yyyy"
+          defaultValue={value}
           data-class="flatpickr-right"
         />
 
@@ -36,3 +53,4 @@ const DatePickerOne = () => {
 };
 
 export default DatePickerOne;
+

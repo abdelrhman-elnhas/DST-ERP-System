@@ -59,13 +59,8 @@ export const NAV_DATA = [
       {
         title: "HR Management & Core Operations",
         icon: Icons.Calendar,
-        items: [{
-          title: "Projects",
-          url: "/projects"
-        }, {
-          title: "Notifications",
-          url: "/notifications"
-        }],
+        url: "/projects",
+        items: [],
       },
 
     ],

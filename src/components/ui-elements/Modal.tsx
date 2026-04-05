@@ -39,8 +39,11 @@ export function Modal() {
                 onClick={closeModal}
             />
 
-            <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-                <div className="w-full max-w-lg rounded-2xl bg-white shadow-3 dark:bg-dark-2">
+            <div className="fixed inset-0 z-50 overflow-y-auto p-4 sm:p-6 lg:p-8">
+                <div className="flex min-h-full items-end justify-center text-center sm:items-center p-0">
+                    <div className="relative transform overflow-hidden rounded-2xl bg-white text-left shadow-3 transition-all sm:my-8 w-full max-w-lg dark:bg-dark-2">
+
+
 
                     {/* Header */}
                     <div className="flex items-center justify-between border-b border-stroke px-6 py-4 dark:border-dark-3">
@@ -62,7 +65,8 @@ export function Modal() {
 
                 </div>
             </div>
-        </>
-
+        </div>
+    </>
     )
 }
+

@@ -19,7 +19,7 @@ import { Pagination } from "@/components/ui/Pagination";
 import { useState } from "react";
 import { useReports } from "@/hooks/useReports";
 import { Report, ReportResponse } from "@/types/report";
-import { CreateReportModal } from "@/components/Modals/CreateReport";
+import { CreateReportModal } from "@/components/Modals/CreateReportModal";
 
 const FieldReportsTable = () => {
     const [page, setPage] = useState(1);
