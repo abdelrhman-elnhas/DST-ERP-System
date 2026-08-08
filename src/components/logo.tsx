@@ -1,5 +1,5 @@
-import darkLogo from "@/assets/logos/dstIcon.png";
-import logo from "@/assets/logos/dst.png";
+import darkLogo from "@/assets/logos/tstIcon.png";
+import logo from "@/assets/logos/tst.png";
 import Image from "next/image";
 
 export function Logo({ className }: { className?: string }) {
@@ -9,7 +9,7 @@ export function Logo({ className }: { className?: string }) {
         src={logo}
         fill
         className="dark:hidden object-contain ms-0"
-        alt="DST logo"
+        alt="TST logo"
         role="presentation"
         priority
         quality={100}
@@ -19,7 +19,7 @@ export function Logo({ className }: { className?: string }) {
         src={darkLogo}
         fill
         className="hidden dark:block object-contain"
-        alt="DST logo"
+        alt="TST logo"
         role="presentation"
         priority
         quality={100}

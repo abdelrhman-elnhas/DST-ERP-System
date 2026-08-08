@@ -18,6 +18,7 @@ The system is designed around:
 * **Centralized modules (HR, documents, assets, tasks)** in one unified dashboard
 
 ---
+
 ## ✨ Core Features
 
 ### 📊 Unified Dashboard
@@ -180,7 +181,7 @@ The system is designed around:
 
 ![Landing Page](./screenshots/landing.png)
 
-### Dark & Light Theme System 
+### Dark & Light Theme System
 
 ![Dark & Light Theme System](./screenshots/theme.png)
 ---
@@ -250,7 +251,7 @@ src/
 **Abdelrhman Elnhas**
 Frontend Engineer | UI/UX Designer
 
-Portfolio: https://abdelrhman-elnhas.com/
+Portfolio: <https://abdelrhman-elnhas.com/>
 
 ---
 

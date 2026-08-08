@@ -74,10 +74,10 @@ export default function SignInPage() {
                 Welcome Back!
               </p>
               <h1 className="mb-4 text-3xl font-bold text-dark dark:text-white leading-snug">
-                Manage your business<br />smarter with DST
+                Manage your business<br />smarter with TST
               </h1>
               <p className="max-w-[340px] text-body-sm text-dark-4 dark:text-dark-6 leading-relaxed">
-                Digital Smart Tree ERP gives you full visibility and control
+                Tech Smart Tree ERP gives you full visibility and control
                 over your operations — all in one place.
               </p>
             </div>

@@ -26,7 +26,7 @@ export function Header() {
 
       <div className="max-xl:hidden">
         <h1 className="mb-0.5 text-xl text-primary text-heading-5 font-bold text-dark dark:text-white">
-          Welcome to Digital Smart Tree
+          Welcome to Tech Smart Tree
         </h1>
         {/* <p className="font-medium">ERP</p> */}
       </div>

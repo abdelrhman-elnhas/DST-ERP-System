@@ -121,16 +121,16 @@ const modules = [
 
 const faqs = [
   {
-    q: "Who is DST ERP designed for?",
-    a: "DST ERP is built for small-to-medium organisations that need a unified platform to manage assets, documents, tasks, and team performance — without the complexity or cost of enterprise-grade systems.",
+    q: "Who is TST ERP designed for?",
+    a: "TST ERP is built for small-to-medium organisations that need a unified platform to manage assets, documents, tasks, and team performance — without the complexity or cost of enterprise-grade systems.",
   },
   {
     q: "Do I need to install anything?",
-    a: "No. DST ERP is fully web-based. You can access all modules from any modern browser across desktop and mobile devices.",
+    a: "No. TST ERP is fully web-based. You can access all modules from any modern browser across desktop and mobile devices.",
   },
   {
     q: "Can multiple users work simultaneously?",
-    a: "Yes. DST ERP is designed for team collaboration. Multiple users can work across different modules at the same time with real-time data updates across the platform.",
+    a: "Yes. TST ERP is designed for team collaboration. Multiple users can work across different modules at the same time with real-time data updates across the platform.",
   },
   {
     q: "Is my data secure?",
@@ -186,7 +186,7 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <div className="flex justify-start items-center gap-2.5">
             <Logo className="" />
-            {/* <span className="font-bold text-dark dark:text-white text-lg tracking-tight">DST<span className="text-primary"> ERP</span></span> */}
+            {/* <span className="font-bold text-dark dark:text-white text-lg tracking-tight">TST<span className="text-primary"> ERP</span></span> */}
           </div>
           <div className="hidden md:flex items-center gap-8 text-sm font-medium text-dark-5 dark:text-dark-6">
             <a href="#modules" className="hover:text-primary dark:hover:text-secondary transition-colors">Modules</a>
@@ -217,7 +217,7 @@ export default function LandingPage() {
           {/* Badge */}
           <div className="inline-flex items-center gap-2 bg-primary/10 dark:bg-primary/20 border border-primary/20 rounded-full px-4 py-1.5 mb-8">
             <span className="w-2 h-2 rounded-full bg-secondary animate-pulse" />
-            <span className="text-primary dark:text-secondary text-xs font-semibold tracking-wide uppercase">Digital Smart Tree</span>
+            <span className="text-primary dark:text-secondary text-xs font-semibold tracking-wide uppercase">Tech Smart Tree</span>
           </div>
 
           <h1 className="text-5xl md:text-6xl font-bold text-dark dark:text-white leading-tight mb-6">
@@ -229,7 +229,7 @@ export default function LandingPage() {
           </h1>
 
           <p className="text-lg text-dark-5 dark:text-dark-6 max-w-2xl mx-auto leading-relaxed mb-10">
-            DST ERP brings together asset management, document control, team collaboration, and project tracking
+            TST ERP brings together asset management, document control, team collaboration, and project tracking
             into one coherent platform — purpose-built for modern organisations.
           </p>
 
@@ -300,7 +300,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ── Why DST ── */}
+      {/* ── Why TST ── */}
       <section className="py-24 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="rounded-3xl bg-gradient-to-br from-primary to-[#1d5c72] dark:from-dark-3 dark:to-dark-2 border border-primary/20 dark:border-dark-3 overflow-hidden relative">
@@ -310,12 +310,12 @@ export default function LandingPage() {
             </div>
             <div className="relative grid md:grid-cols-2 gap-12 items-center p-10 md:p-16">
               <div>
-                <p className="text-secondary text-sm font-semibold uppercase tracking-widest mb-4">Why Choose DST?</p>
+                <p className="text-secondary text-sm font-semibold uppercase tracking-widest mb-4">Why Choose TST?</p>
                 <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 leading-tight">
                   Designed for Teams That Mean Business
                 </h2>
                 <p className="text-blue-light-3 text-base leading-relaxed mb-8">
-                  DST ERP was built from real operational pain points. We focused on clarity, speed, and simplicity
+                  TST ERP was built from real operational pain points. We focused on clarity, speed, and simplicity
                   so your team spends less time managing tools and more time doing real work.
                 </p>
                 <Link
@@ -429,7 +429,7 @@ export default function LandingPage() {
             Ready to transform how your team works?
           </h2>
           <p className="text-dark-5 dark:text-dark-6 mb-8">
-            Join organisations already using DST ERP to streamline their daily operations.
+            Join organisations already using TST ERP to streamline their daily operations.
           </p>
           <Link
             href="/auth/signin"
@@ -452,10 +452,10 @@ export default function LandingPage() {
             <div className="md:col-span-2">
               <div className="flex items-center gap-2.5 mb-4">
                 <Logo />
-                {/* <span className="font-bold text-dark dark:text-white text-lg tracking-tight">DST<span className="text-primary"> ERP</span></span> */}
+                {/* <span className="font-bold text-dark dark:text-white text-lg tracking-tight">TST<span className="text-primary"> ERP</span></span> */}
               </div>
               <p className="text-sm text-dark-5 dark:text-dark-6 leading-relaxed max-w-xs">
-                Digital Smart Tree ERP — a unified platform for asset management, documents, tasks, and team collaboration.
+                Tech Smart Tree ERP — a unified platform for asset management, documents, tasks, and team collaboration.
               </p>
             </div>
 
@@ -483,7 +483,7 @@ export default function LandingPage() {
           </div>
 
           <div className="border-t border-stroke dark:border-dark-3 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-dark-5 dark:text-dark-6">
-            <span>© {new Date().getFullYear()} Digital Smart Tree. All rights reserved.</span>
+            <span>© {new Date().getFullYear()} Tech Smart Tree. All rights reserved.</span>
             <span className="flex items-center gap-1.5">
               Built with
               <span className="text-red-light">♥</span>
